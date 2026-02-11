@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDA-1B: Scaling Latent Dynamics Action Model via Universal Embodied Data Ingestion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1><span class="title-lda">LDA</span>-1B: Scaling <span style="text-decoration: underline;">L</span>atent <span style="text-decoration: underline;">D</span>ynamics <span style="text-decoration: underline;">A</span>ction Model via Universal Embodied Data Ingestion</h1>
+
+            <div class="authors">
+                <span class="author"><strong><a href="https://jiangranlv.github.io/" target="_blank">Jiangran Lyu</a>*<sup>1,2</sup></strong></span>
+                <span class="author"><strong>Kai Liu*<sup>2,3,4</sup></strong></span>
+                <span class="author"><strong><a href="https://catburgg.github.io" target="_blank">Xuheng Zhang</a>*<sup>1,2</sup></strong></span>
+                <span class="author">Haoran Liao<sup>2,6</sup></span>
+                <span class="author"><a href="https://wangchek.github.io/" target="_blank">Yusen Feng</a><sup>1,2</sup></span>
+                <span class="author"><a href="https://skywalker-dell.github.io/personal-page/" target="_blank">Wenxuan Zhu</a><sup>1</sup></span>
+                <span class="author">Tingrui Shen<sup>1</sup></span>
+                <span class="author"><a href="https://jychen18.github.io/" target="_blank">Jiayi Chen</a><sup>1,2</sup></span>
+                <span class="author"><a href="https://jzhzhang.github.io/" target="_blank">Jiazhao Zhang</a><sup>1,2</sup></span>
+                <span class="author">Yifei Dong<sup>1</sup></span>
+                <span class="author"><a href="https://cwb0106.github.io/" target="_blank">Wenbo Cui</a><sup>2,3,4</sup></span>
+                <span class="author">Senmao Qi<sup>2</sup></span>
+                <span class="author">Shuo Wang<sup>2</sup></span>
+                <span class="author">Yixin Zheng<sup>2,3,4</sup></span>
+                <span class="author"><a href="https://miyandoris.github.io/" target="_blank">Mi Yan</a><sup>1,2</sup></span>
+                <span class="author"><a href="https://scholar.google.com/citations?user=wRBbtl8AAAAJ&hl=en" target="_blank">Xuesong Shi</a><sup>2</sup></span>
+                <span class="author"><a href="https://ia.cas.cn/rcdw/fyjy/202404/t20240422_7129926.html" target="_blank">Haoran Li</a><sup>3</sup></span>
+                <span class="author"><a href="https://people.ucas.ac.cn/~zhaodongbin?language=en" target="_blank">Dongbin Zhao</a><sup>3</sup></span>
+                <span class="author"><a href="https://mingyuliu.net/" target="_blank">Ming-Yu Liu</a><sup>7</sup></span>
+                <span class="author"><a href="https://scholar.google.com/citations?user=X7M0I8kAAAAJ&hl=en" target="_blank">Zhizheng Zhang</a><sup>2</sup></span>
+                <span class="author"><a href="https://ericyi.github.io/" target="_blank">Li Yi</a><sup>5,†</sup></span>
+                <span class="author"><a href="https://cfcs.pku.edu.cn/english/people/faculty/yizhouwang/index.htm" target="_blank">Yizhou Wang</a><sup>1,†</sup></span>
+                <span class="author"><a href="https://hughw19.github.io/" target="_blank">He Wang</a><sup>1,2,†</sup></span>
+            </div>
+
+            <div class="affiliations">
+                <div class="affiliation">* Equal contribution &nbsp;&nbsp; † Corresponding author</div>
+                <div class="affiliation"><sup>1</sup>Peking University &nbsp;&nbsp; <sup>2</sup>Galbot &nbsp;&nbsp; <sup>3</sup>CASIA</div>
+                <div class="affiliation"><sup>4</sup>BAAI &nbsp;&nbsp; <sup>5</sup>Tsinghua University &nbsp;&nbsp; <sup>6</sup>Sun Yat-sen University &nbsp;&nbsp; <sup>7</sup>NVIDIA</div>
+            </div>
+        </header>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <a href="#" class="btn disabled">📄 Paper (Coming Soon)</a>
+            <a href="#" class="btn disabled">💻 Code (Coming Soon)</a>
+            <a href="#" class="btn disabled">🤗 Models (Coming Soon)</a>
+        </div>
+
+        <!-- Teaser Image -->
+        <section id="teaser">
+            <img src="images/lda_teaser.png" alt="LDA-1B Model Overview" style="width: 100%; border-radius: 10px; margin: 30px auto; display: block;">
+        </section>
+
+        <!-- Abstract -->
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <div class="abstract">
+                Recent robot foundation models largely rely on large-scale behavior cloning, which imitates expert actions but discards transferable dynamics knowledge embedded in heterogeneous embodied data.
+                While the Unified World Model (UWM) formulation has the potential to leverage such diverse data, existing instantiations struggle to scale to foundation-level due to coarse data usage and fragmented datasets.
+                We introduce <strong>LDA-1B</strong>, a robot foundation model that scales through universal embodied data ingestion by jointly learning dynamics, policy, and visual forecasting, assigning distinct roles to data of varying quality.
+                To support this regime at scale, we assemble and standardize <strong>EI-30k</strong>, an embodied interaction dataset comprising over <strong>30k hours</strong> of human and robot trajectories in a unified format.
+                Scalable dynamics learning over such heterogeneous data is enabled by operating in a structured DINO latent space, which avoids redundant pixel-space appearance modeling.
+                Complementing this representation, LDA-1B employs a mixed-frequency multi-modal diffusion transformer to handle asynchronous vision and action streams, enabling stable training at the <strong>1B-parameter</strong> scale.
+                Experiments in simulation and the real world show LDA-1B outperforms prior methods (e.g., π<sub>0.5</sub>) by up to <strong>21%</strong>, <strong>48%</strong>, and <strong>23%</strong> on contact-rich, dexterous, and long-horizon tasks, respectively.
+                Notably, LDA-1B enables data-efficient fine-tuning, gaining 10% by leveraging 30% low-quality trajectories typically harmful and discarded. <em>The code and data will be publicly released to benefit the community.</em>
+            </div>
+        </section>
+
+        <!-- DINO Latent Space -->
+        <section id="dino">
+            <h2>World Model in DINO Latent Space</h2>
+            <p style="margin-top: 20px; line-height: 1.8; text-align: justify;">
+                LDA-1B operates in a structured DINO latent space, which avoids redundant pixel-space appearance modeling and enables the model to focus on task-relevant features.
+                Each video below shows three columns: <strong>(Left)</strong> Original RGB video, <strong>(Middle)</strong> DINO feature visualization, and <strong>(Right)</strong> Model prediction.
+                The DINO features capture semantically meaningful representations that facilitate dynamics learning across diverse embodied data.
+            </p>
+            <div class="video-grid video-grid-row">
+                <div class="video-item">
+                    <video controls loop muted playsinline>
+                        <source src="videos/dino_dex.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-column-caption"><span>Original RGB video</span><span>DINO feature visualization</span><span>Model prediction</span></div>
+                    <div class="video-caption">Dexterous Manipulation</div>
+                </div>
+                <div class="video-item">
+                    <video controls loop muted playsinline>
+                        <source src="videos/dino_human.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-column-caption"><span>Original RGB video</span><span>DINO feature visualization</span><span>Model prediction</span></div>
+                    <div class="video-caption">Human Demonstration</div>
+                </div>
+                <div class="video-item">
+                    <video controls loop muted playsinline>
+                        <source src="videos/dino_pillow.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-column-caption"><span>Original RGB video</span><span>DINO feature visualization</span><span>Model prediction</span></div>
+                    <div class="video-caption">Pillow Task</div>
+                </div>
+                <div class="video-item">
+                    <video controls loop muted playsinline>
+                        <source src="videos/dino_rubbish.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-column-caption"><span>Original RGB video</span><span>DINO feature visualization</span><span>Model prediction</span></div>
+                    <div class="video-caption">Rubbish Disposal</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scaling Curves -->
+        <section id="scaling">
+            <h2>Scaling Analysis</h2>
+            <div class="two-column-grid">
+                <div class="column-item">
+                    <h3>Data Scaling: Universal Embodied Data Ingestion</h3>
+                    <img src="images/data_scaling.png" alt="Data Scaling Results" style="width: 100%; border-radius: 10px; margin: 20px auto; display: block;">
+                    <p style="margin-top: 20px; line-height: 1.8; text-align: justify;">
+                        <strong>Action Prediction Error vs. Training Data Size.</strong> Our co-training framework (blue) achieves steady error reduction to 0.066 by effectively leveraging diverse data, including low-quality trajectories and actionless videos.
+                        The <em>Policy Only</em> baseline (grey) shows that naive behavior cloning is easily distracted by noise in heterogeneous datasets—error spikes sharply when lower-quality data is included.
+                        In contrast, our full co-training framework exhibits a steady downward trend, effectively converting potential noise into useful supervisory signals for improved generalization.
+                    </p>
+                </div>
+                <div class="column-item">
+                    <h3>Model Scaling: Stable Large-Scale Training</h3>
+                    <img src="images/model_scaling.png" alt="Model Scaling Results" style="width: 100%; border-radius: 10px; margin: 20px auto; display: block;">
+                    <p style="margin-top: 20px; line-height: 1.8; text-align: justify;">
+                        <strong>Scaling Performance Across Model Sizes.</strong> LDA (blue) demonstrates consistent error reduction with increasing dataset size (5k→20k trajectories) and model parameters (0.1B→1B).
+                        Performance consistently improves with model size, showing that LDA-1B effectively consumes larger and more diverse datasets.
+                        In contrast, the UWM baseline (grey) saturates rapidly and degrades with additional data, highlighting that LDA-1B's latent dynamics representation combined with the mixed-frequency multi-modal transformer enables stable large-scale training.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model and Dataset -->
+        <section id="model-dataset">
+            <h2>Universal Model & Embodied Dataset</h2>
+            <div class="two-column-grid">
+                <div class="column-item">
+                    <h3>Model Architecture</h3>
+                    <img src="images/LDA_pipeline.png" alt="LDA-1B Architecture" style="display: block; margin: 0 auto;">
+                    <p style="line-height: 1.8; text-align: justify;">
+                        <strong>Architecture of the Multi-Modal Diffusion Transformer (MM-DiT).</strong> The model jointly denoises action chunks and predicts future visual features within a unified diffusion framework.
+                        The diffusion timestep and task specification are fused into a unified conditioning signal, while VLM-generated conditioning tokens (from observations and language instructions) are integrated through cross-attention mechanisms.
+                        LDA-1B operates in a structured DINO latent space to avoid redundant pixel-space appearance modeling, enabling scalable dynamics learning over heterogeneous data.
+                    </p>
+                </div>
+                <div class="column-item">
+                    <h3>EI-30k Dataset</h3>
+                    <img src="images/dataset.png" alt="EI-30k Dataset" style="display: block; margin: 0 auto;">
+                    <p style="line-height: 1.8; text-align: justify;">
+                        <strong>Overview of EI-30K.</strong> The dataset contains ~30k hours of diverse human and robot interaction data: 8.03k hours real-world robot, 8.6k simulated, 7.2k human demonstrations with actions, and 10k actionless videos. It spans varying episode lengths and manipulation tasks. All subdatasets are quality-annotated and converted to the LeRobot format for unified observations, actions, and language.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-World Demonstrations -->
+        <section id="demos">
+            <h2>Real-World Demonstrations</h2>
+
+            <!-- BrainCo Robot -->
+            <div class="video-section">
+                <h3>Unitree G1 with BrainCo Hand</h3>
+                <div class="video-description">
+                    Demonstrations with the Unitree G1 humanoid robot equipped with BrainCo dexterous hand (10 DoF).
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/brainco_grasp_1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Grasping Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/brainco_hammer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Hammer Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/bainco_mac.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Mac Interaction</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/brainco_oven_1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Oven Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/brainco_unscrew_10x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Unscrewing (10x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/brianco_lip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Lip Task</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galbot Robot -->
+            <div class="video-section">
+                <h3>Galbot G1</h3>
+                <div class="video-description">
+                    Demonstrations with the Galbot G1 humanoid robot equipped with two-finger gripper.
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_flip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Flipping Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_grasp_8x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Grasping (8x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_handover_4x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Handover Task (4x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_knock.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Knocking Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_rubbish_5x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Rubbish Disposal (5x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_sweep_2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Sweeping Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_water2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Pouring Water</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sharpa Robot -->
+            <div class="video-section">
+                <h3>Galbot G1 with SharpaWave Hand</h3>
+                <div class="video-description">
+                    Demonstrations with the Galbot G1 equipped with SharpaWave dexterous hand (22 DoF).
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/sharpa_clip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Clipping Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/sharpa_flip_1.5.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Flipping (1.5x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/sharpa_gan_4x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">GAN Task (4x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/sharpa_grasp.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Grasping Task</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/sharpa_scoop_2x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Scooping (2x speed)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robot Setup -->
+            <div class="robot-setup" style="margin: 40px 0;">
+                <h3>Robot Platforms</h3>
+                <img src="images/real_setup.png" alt="Real-world Robot Platforms" style="border-radius: 10px; margin: 20px auto; display: block;">
+                <p style="margin-top: 20px; line-height: 1.8; text-align: justify;">
+                    <strong>Real-world robot platforms used in our physical experiments.</strong> From left to right:
+                    (1) Galbot G1 equipped with a standard two-finger parallel gripper for basic grasping tasks;
+                    (2) Galbot G1 fitted with the SharpaWave dexterous hand (22 DoF) for fine manipulation;
+                    (3) Unitree G1 mounted with the BrainCo dexterous hand (10 DoF) and a Zed Mini camera.
+                    This multi-platform setup demonstrates the generalization capability of our LDA model across diverse robot morphologies and end-effectors.
+                </p>
+            </div>
+        </section>
+
+        <!-- Citation -->
+        <section id="citation">
+            <div class="citation">
+                <h3>BibTeX</h3>
+                <pre>@article{lyu2025lda1b,
+  title={LDA-1B: Scaling Latent Dynamics Action Model via Universal Embodied Data Ingestion},
+  author={Lyu, Jiangran and Liu, Kai and Zhang, Xuheng and Liao, Haoran and Feng, Yusen and Zhu, Wenxuan and Shen, Tingrui and Chen, Jiayi and Zhang, Jiazhao and Dong, Yifei and Wenbo, Cui and Qi, Senmao and Wang, Shuo and Zheng, Yixin and Yan, Mi and Shi, Xuesong and Li, Haoran and Zhao, Dongbin and Liu, Ming-Yu and Zhang, Zhizheng and Yi, Li and Wang, Yizhou and Wang, He},
+  journal={arXiv preprint},
+  year={2025}
+}</pre>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io/" target="_blank">Nerfies</a> project page.</p>
+            <p>You are free to borrow the source code of this website, we just ask that you link back to this page in the footer.</p>
+            <p>This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>
