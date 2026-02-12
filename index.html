@@ -7,13 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header>
-            <h1><span class="title-lda">LDA</span>-1B: Scaling <span style="text-decoration: underline;">L</span>atent <span style="text-decoration: underline;">D</span>ynamics <span style="text-decoration: underline;">A</span>ction Model via Universal Embodied Data Ingestion</h1>
+            <h1><span class="title-lda">LDA</span> -1B: Scaling <span style="text-decoration: underline;">L</span>atent <span style="text-decoration: underline;">D</span>ynamics <span style="text-decoration: underline;">A</span>ction Model via Universal Embodied Data Ingestion</h1>
 
             <div class="authors">
                 <span class="author"><strong><a href="https://jiangranlv.github.io/" target="_blank">Jiangran Lyu</a>*<sup>1,2</sup></strong></span>
@@ -43,16 +44,34 @@
 
             <div class="affiliations">
                 <div class="affiliation">* Equal contribution &nbsp;&nbsp; † Corresponding author</div>
-                <div class="affiliation"><sup>1</sup>Peking University &nbsp;&nbsp; <sup>2</sup>Galbot &nbsp;&nbsp; <sup>3</sup>CASIA</div>
-                <div class="affiliation"><sup>4</sup>BAAI &nbsp;&nbsp; <sup>5</sup>Tsinghua University &nbsp;&nbsp; <sup>6</sup>Sun Yat-sen University &nbsp;&nbsp; <sup>7</sup>NVIDIA</div>
+                <div class="affiliation"><sup>1</sup>PKU &nbsp;&nbsp; <sup>2</sup>Galbot &nbsp;&nbsp; <sup>3</sup>CASIA &nbsp;&nbsp; <sup>4</sup>BAAI &nbsp;&nbsp; <sup>5</sup>THU &nbsp;&nbsp; <sup>6</sup>SYSU &nbsp;&nbsp; <sup>7</sup>NVIDIA</div>
             </div>
         </header>
 
         <!-- Navigation Buttons -->
         <div class="nav-buttons">
-            <a href="#" class="btn disabled">📄 Paper (Coming Soon)</a>
-            <a href="#" class="btn disabled">💻 Code (Coming Soon)</a>
-            <a href="#" class="btn disabled">🤗 Models (Coming Soon)</a>
+            <a href="#" class="btn disabled">
+                <span class="icon">
+                    <svg width="16" height="16" viewBox="0 0 384 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"></path>
+                    </svg>
+                </span>
+                <span>Paper (Coming Soon)</span>
+            </a>
+            <a href="#" class="btn disabled">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code (Coming Soon)</span>
+            </a>
+            <a href="#" class="btn disabled">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <span>Data (Coming Soon)</span>
+            </a>
+            <a href="#" class="btn disabled">
+                <span class="icon">
+                    <img src="static/svg/hf.svg" alt="huggingface" width="16" height="16">
+                </span>
+                <span>Model (Coming Soon)</span>
+            </a>
         </div>
 
         <!-- Teaser Image -->
@@ -171,6 +190,114 @@
         <section id="demos">
             <h2>Real-World Demonstrations</h2>
 
+            <!-- Galbot Robot -->
+            <div class="video-section">
+                <h3>Galbot G1</h3>
+                <div class="video-description">
+                    Demonstrations with the Galbot G1 humanoid robot equipped with two-finger gripper.
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_grasp_8x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Grasping (8x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_handover_4x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Handover Task (4x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_rubbish_5x.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Rubbish Disposal (5x speed)</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_flip.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Flipping Task</div>
+                    </div>
+                    <!-- <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_knock.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Knocking Task</div>
+                    </div> -->
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_water2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Pouring Water</div>
+                    </div>
+                    <div class="video-item">
+                        <video controls loop muted playsinline>
+                        <source src="videos/galbot_sweep_2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                        <div class="video-caption">Sweeping Task</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sharpa Robot -->
+            <div class="video-section">
+                <h3>Galbot G1 with SharpaWave Hand</h3>
+                <div class="video-description">
+                    Demonstrations with the Galbot G1 equipped with SharpaWave dexterous hand (22 DoF).
+                </div>
+                <div class="video-grid-sharpa">
+                    <div class="row-center">
+                        <div class="video-item">
+                            <video controls loop muted playsinline>
+                            <source src="videos/sharpa_clip.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                            <div class="video-caption">Clipping Task</div>
+                        </div>
+                        <div class="video-item">
+                            <video controls loop muted playsinline>
+                            <source src="videos/sharpa_flip_1.5.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                            <div class="video-caption">Flipping (1.5x speed)</div>
+                        </div>
+                    </div>
+                    <div class="row-full">
+                        <div class="video-item">
+                            <video controls loop muted playsinline>
+                            <source src="videos/sharpa_gan_4x.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                            <div class="video-caption">GAN Task (4x speed)</div>
+                        </div>
+                        <div class="video-item">
+                            <video controls loop muted playsinline>
+                            <source src="videos/sharpa_grasp.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                            <div class="video-caption">Grasping Task</div>
+                        </div>
+                        <div class="video-item">
+                            <video controls loop muted playsinline>
+                            <source src="videos/sharpa_scoop_2x.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                            <div class="video-caption">Scooping (2x speed)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- BrainCo Robot -->
             <div class="video-section">
                 <h3>Unitree G1 with BrainCo Hand</h3>
@@ -219,110 +346,6 @@
                         Your browser does not support the video tag.
                     </video>
                         <div class="video-caption">Lip Task</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Galbot Robot -->
-            <div class="video-section">
-                <h3>Galbot G1</h3>
-                <div class="video-description">
-                    Demonstrations with the Galbot G1 humanoid robot equipped with two-finger gripper.
-                </div>
-                <div class="video-grid">
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_flip.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Flipping Task</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_grasp_8x.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Grasping (8x speed)</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_handover_4x.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Handover Task (4x speed)</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_knock.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Knocking Task</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_rubbish_5x.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Rubbish Disposal (5x speed)</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_sweep_2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Sweeping Task</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/galbot_water2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Pouring Water</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sharpa Robot -->
-            <div class="video-section">
-                <h3>Galbot G1 with SharpaWave Hand</h3>
-                <div class="video-description">
-                    Demonstrations with the Galbot G1 equipped with SharpaWave dexterous hand (22 DoF).
-                </div>
-                <div class="video-grid">
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/sharpa_clip.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Clipping Task</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/sharpa_flip_1.5.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Flipping (1.5x speed)</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/sharpa_gan_4x.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">GAN Task (4x speed)</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/sharpa_grasp.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Grasping Task</div>
-                    </div>
-                    <div class="video-item">
-                        <video controls loop muted playsinline>
-                        <source src="videos/sharpa_scoop_2x.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                        <div class="video-caption">Scooping (2x speed)</div>
                     </div>
                 </div>
             </div>

@@ -26,20 +26,22 @@ header {
 
 h1 {
     font-size: 2.8em;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 18px;
     line-height: 1.2;
 }
 
 h1 .title-lda {
-    font-family: 'Libre Baskerville', serif;
-    font-weight: 400;
-    font-size: 1.35em;
-    letter-spacing: 0.18em;
+    font-family: 'Playfair Display', 'Garamond', 'Times New Roman', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1em;
     transform: scaleX(1.12);
     transform-origin: left center;
     display: inline-block;
     margin-right: 0.12em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.15);
+    color: #2c2c2c;
 }
 
 .authors {
@@ -86,22 +88,32 @@ h1 .title-lda {
 .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 30px;
-    background-color: #4a90e2;
+    gap: 10px;
+    padding: 12px 24px;
+    background-color: #2c2c2c;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn .icon {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1em;
 }
 
 .btn:hover {
-    background-color: #357abd;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
 .btn.disabled {
-    background-color: #ccc;
+    background-color: #2c2c2c;
+    opacity: 0.6;
     cursor: not-allowed;
     pointer-events: none;
 }
@@ -195,9 +207,40 @@ section img {
     height: auto;
 }
 
+/* Sharpa videos: 2 in first row (centered), 3 in second row */
+.video-grid-sharpa {
+    margin: 40px 0;
+}
+
+.row-center {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.row-center .video-item {
+    flex: 0 0 calc((100% - 60px) / 3); /* 和第二行3列布局时的宽度一致 */
+    max-width: calc((100% - 60px) / 3);
+}
+
+.row-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
 @media (max-width: 768px) {
     .video-grid-row {
         grid-template-columns: 1fr !important;
+    }
+    
+    .video-grid-sharpa {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-grid-sharpa .video-item:nth-child(n) {
+        grid-column: 1;
     }
 }
 
